@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nana - The Super Cute Cat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crafty+Girls&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-mint: #C0E1D2;
+            --bg-cream: #E5EEE4;
+            --bg-sand: #F6F4E8;
+            --accent-pink: #DC9B9B;
+            --text-dark: #4A4A4A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crafty Girls', cursive;
+            background-color: var(--bg-sand);
+            color: var(--text-dark);
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90vw;
+            height: 90vh;
+            background-color: var(--bg-cream);
+            border: 8px solid var(--accent-pink);
+            border-radius: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            position: relative;
+            padding: 20px;
+            box-shadow: 20px 20px 0px var(--bg-mint);
+        }
+
+        .profile-section {
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .image-frame {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 10px solid white;
+            overflow: hidden;
+            background-color: var(--bg-mint);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .paw-print {
+            position: absolute;
+            font-size: 40px;
+            color: var(--accent-pink);
+            opacity: 0.6;
+        }
+
+        .name-tag {
+            background-color: var(--accent-pink);
+            color: white;
+            padding: 10px 40px;
+            border-radius: 25px;
+            font-size: 2.5rem;
+            margin-top: -30px;
+            z-index: 2;
+            transform: rotate(-2deg);
+            box-shadow: 4px 4px 0px var(--text-dark);
+        }
+
+        .quote-bubble {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 30px;
+            position: relative;
+            max-width: 80%;
+            text-align: center;
+            font-size: 1.5rem;
+            border: 4px solid var(--bg-mint);
+        }
+
+        .quote-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            border-width: 20px 20px 0;
+            border-style: solid;
+            border-color: white transparent;
+            display: block;
+            width: 0;
+            margin-left: -20px;
+        }
+
+        .status-pill {
+            display: flex;
+            gap: 15px;
+        }
+
+        .pill {
+            padding: 8px 20px;
+            border-radius: 15px;
+            background: var(--bg-mint);
+            font-size: 1.1rem;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        .decor {
+            position: absolute;
+            z-index: -1;
+            font-size: 60px;
+            color: var(--accent-pink);
+            opacity: 0.3;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .image-frame { width: 180px; height: 180px; }
+            .name-tag { font-size: 1.8rem; }
+            .quote-bubble { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <span class="decor" style="top: 5%; left: 10%;">🐾</span>
+        <span class="decor" style="bottom: 10%; right: 5%;">🧶</span>
+        <span class="decor" style="top: 15%; right: 15%;">✨</span>
+
+        <div class="profile-section">
+            <div class="image-frame">
+                <!-- Using a cute cat placeholder as requested for the profile -->
+                <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=500" alt="Nana the Cat">
+            </div>
+        </div>
+
+        <h1 class="name-tag">Nana</h1>
+
+        <div class="quote-bubble" id="quote">
+            Loading cat-titude...
+        </div>
+
+        <div class="status-pill">
+            <div class="pill">Mood: Sleepy 😴</div>
+            <div class="pill">Status: Hungry 🐟</div>
+        </div>
+    </div>
+
+    <script>
+        const quotes = [
+            "I'm not fat, I'm just fluffy!",
+            "I do what I want. Meow.",
+            "Human, the bowl is 99% full. I am starving.",
+            "I saw a ghost. Just kidding, it was a dust bunny.",
+            "Nap time is every time.",
+            "If I fits, I sits.",
+            "Professional box tester.",
+            "I'm the boss of this house. Period."
+        ];
+
+        function changeQuote() {
+            const qElement = document.getElementById('quote');
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            qElement.innerText = randomQuote;
+        }
+
+        // Initialize and change every 4 seconds
+        changeQuote();
+        setInterval(changeQuote, 4000);
+    </script>
+</body>
+</html>
